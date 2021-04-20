@@ -4,10 +4,10 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    restart: always
+    restart: unless-stopped
     ports: 
       - 1972
-      -65282:52773
+      - 65282:52773
       - 53773
     volumes:
       - ./:/irisrun/repo
