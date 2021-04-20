@@ -15,4 +15,9 @@ Do ##class(HS.FHIRServer.Installer).InstallNamespace()
 
 ;do $System.OBJ.LoadDir("/opt/irisbuild/src","ck",,1)
 zpm "load /opt/irisbuild/ -v":1:1
+
+Do ##class(I2B2.FHIR.Install).Install()
+
+Do ##class(I2B2.FHIR.Install).LoadDefData("/opt/irisbuild/dataset/data.gof")
+
 halt
