@@ -34,6 +34,56 @@ Steps creating the project
     9. Document the process of implementation of I2B2 on IRIS.
     10. Publish the implementation and documentation to InterSystems Open Exchange.
 
-### More info
+## Running IRIS with sample I2B2 dataset
+
+These steps are following instructions provided by InterSystems community.
+
+### Prerequisites
+
+Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
+
+### Installation 
+
+1. Clone/git pull the repo into any local directory
+
+```
+$ git clone https://github.com/ELynx/i2b2-on-iris-raw-structure.git
+```
+
+2. Open the terminal in this directory and run:
+
+```
+$ docker-compose build
+```
+
+This step may take some time to complete, since FHIR packages are prepared. If process seem to stop at
+
+```
+$ Load Resources: hl7.fhir.r3.core@3.0.2
+```
+
+then wait some more time, up to 25 minutes may be necessary, or more, depending on your machine power.
+
+3. Run the IRIS container with your project:
+
+```
+$ docker-compose up -d
+```
+
+### How to Test it
+
+On Docker host machine execute:
+
+```
+$ curl -H "Accept: application/fhir+json" -X GET http://localhost:65282/i2b2/fhir/r4/Patient/1000000035
+```
+
+Expected response is:
+
+```json
+
+```
+
+## More info
 
 For data migration, POC queries and diagrams, see `Documentation i2b2 on Iris.pdf`
