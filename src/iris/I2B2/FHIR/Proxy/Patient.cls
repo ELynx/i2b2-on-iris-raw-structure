@@ -41,7 +41,7 @@ ClassMethod KeyIdxOpen(rsrcKey As %String, empty, tSC As %Status) As I2B2.FHIR.P
 	&sql(select tval_char, import_date into :mrn, :date from "public".observation_fact where concept_cd = 'PHI:MRN' and patient_num = :patientId)
 	i SQLCODE<0 {
 		s errText="Ошибка исполнения SQL запроса ""select tval_char from ""public"".observation_fact where concept_cd = 'PHI:MRN' and patient_num = "_patientId_""":"_$SYSTEM.SQL.SQLCODE(SQLCODE)
-		s tSC = $$$ERROR($$$GeneralError, errText) 
+		s tSC = $$$ERROR($$$GeneralError, errText)
 	} else {
 		s proxy.MRN = mrn
 		s proxy.MRNDate = date
@@ -52,14 +52,14 @@ ClassMethod KeyIdxOpen(rsrcKey As %String, empty, tSC As %Status) As I2B2.FHIR.P
 	&sql(select tval_char into :lName from "public".observation_fact where concept_cd = 'PHI:LNAME' and patient_num = :patientId)
 	i SQLCODE<0 {
 		s errText="Ошибка исполнения SQL запроса ""select tval_char from ""public"".observation_fact where concept_cd = 'PHI:LNAME' and patient_num = "_patientId_""":"_$SYSTEM.SQL.SQLCODE(SQLCODE)
-		s tSC = $$$ERROR($$$GeneralError, errText) 
+		s tSC = $$$ERROR($$$GeneralError, errText)
 	} else {
 		s proxy.LName = lName
 	}
 	&sql(select tval_char into :fName from "public".observation_fact where concept_cd = 'PHI:FNAME' and patient_num = :patientId)
 	i SQLCODE<0 {
 		s errText="Ошибка исполнения SQL запроса ""select tval_char from ""public"".observation_fact where concept_cd = 'PHI:FNAME' and patient_num = "_patientId_""":"_$SYSTEM.SQL.SQLCODE(SQLCODE)
-		s tSC = $$$ERROR($$$GeneralError, errText) 
+		s tSC = $$$ERROR($$$GeneralError, errText)
 	} else {
 		s proxy.FName = fName
 	}

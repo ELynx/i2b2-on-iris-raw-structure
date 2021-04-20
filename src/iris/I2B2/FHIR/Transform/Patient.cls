@@ -12,7 +12,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 		s patientId = source.PatientId
 		s lookup = "I2B2.FHIR.Lookup.Patient"
 
-		// internal 
+		// internal
 		s identifier = ##class(HS.FHIR.DTL.vR4.Model.Datatype.Identifier).%New()
 		s identifier.value = patientId
 		s identifier.use = ..Lookup(lookup,"identifier_use")
@@ -33,7 +33,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 			s identifier.periodNewObject().start = $e(source.Patient.importdate, 1, 10)
 		}
 		d target.identifier.Insert(identifier)
-		
+
 		// MRN
 		i source.MRN '= "" {
 			s identifier = ##class(HS.FHIR.DTL.vR4.Model.Datatype.Identifier).%New()
@@ -59,10 +59,10 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 			}
 			d target.identifier.Insert(identifier)
 		}
-		
+
 		//
 		s target.birthDate = $e($tr(source.Patient.birthdate, $c(0)), 1, 10)
-		
+
 		// Patient.name
 		i (source.LName '= "")||(source.FName '= "") {
 			s humanName = ##class(HS.FHIR.DTL.vR4.Model.Datatype.HumanName).%New()
@@ -71,7 +71,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 			d:source.FName'="" humanName.given.Insert(source.FName)
 			d target.name.Insert(humanName)
 		}
-	
+
 		// Patient.deceased. deceasedBoolean
 		// Patient.deceased.deceasedDateTime
 		i $tr(source.Patient.deathdate, $c(0)) '= "" {
@@ -80,13 +80,13 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 		} else {
 			s target.deceasedBoolean = 0
 		}
-		
+
 		// Patient.gender
 		s sex = source.Patient.sexcd
 		s sex = ..Lookup("I2B2.FHIR.Lookup.Gender", sex)
 		s:sex="" sex = ..Lookup("I2B2.FHIR.Lookup.Gender", "unknown")
 		s target.gender = sex
-		
+
 		// Patient.extension: patient-nationality
 		i $tr(source.Patient.racecd, $c(0)) '= "" {
 			s data = ..Lookup("I2B2.FHIR.Lookup.RacePatientNationality", source.Patient.racecd)
@@ -100,7 +100,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 				d target.extension.Insert(extension)
 			}
 		}
-		
+
 #;		// Patient.extension: us-core-race
 #;		i $tr(source.Patient.racecd, $c(0)) '= "" {
 #;			s race = ..Lookup("I2B2.FHIR.Lookup.Race", source.Patient.racecd)
@@ -113,7 +113,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 #;				d target.extension.Insert(extension)
 #;			}
 #;		}
-		
+
 		// Patient.extension: patient-religion
 		i $tr(source.Patient.religioncd, $c(0)) '= "" {
 			s data = ..Lookup("I2B2.FHIR.Lookup.Religion", source.Patient.religioncd)
@@ -126,7 +126,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 				d target.extension.Insert(extension)
 			}
 		}
-		
+
 		// Patient.communication.language
 		// Patient.communication.preferred
 		i $tr(source.Patient.languagecd, $c(0)) '= "" {
@@ -142,7 +142,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 				d target.communication.Insert(communication)
 			}
 		}
-		
+
 		// Patient.maritalStatus
 		s data = ""
 		i $tr(source.Patient.maritalstatuscd, $c(0)) '= "" {
@@ -156,7 +156,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 			s coding.display = $p(data, "~", 2, *)
 			d target.maritalStatusNewObject().coding.Insert(coding)
 		}
-		
+
 		// Patient.address
 		s statecityzippath = $tr(source.Patient.statecityzippath, $c(0))
 		i $l(statecityzippath, "\") > 4 {
@@ -169,7 +169,7 @@ ClassMethod Transform(source As I2B2.FHIR.Proxy.Patient, target As HS.FHIR.DTL.v
 			s address.country = ..Lookup(lookup,"address_country")
 			d target.address.Insert(address)
 		}
-		
+
 	} catch e {
 		s sc = e.AsStatus()
 	}

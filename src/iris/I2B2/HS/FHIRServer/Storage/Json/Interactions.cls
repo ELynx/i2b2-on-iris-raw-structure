@@ -7,7 +7,7 @@ Method Read(pResourceType As %String, pResourceId As %String, pVersionId As %Str
 	$$$FSLog("Read: pResourceType="_pResourceType_" pResourceId="_ pResourceId_" pVersionId="_pVersionId)
 
 	s proxy = ..GetProxyObject(pResourceType, pResourceId, pVersionId)
-	
+
 	i $iso(proxy) {
 		#dim response As %DynamicObject = proxy.Transform()
 
@@ -68,7 +68,7 @@ Method FindProxyObject(pResourceType As %String, pResourceId As %String, pVersio
 		// We have at least one version.  Get it first ..
 		Set obj = $classmethod(resourceClass, "KeyIdxOpen", rsrcKey, , .tSC )
 		// There is a current object, is this the one that was asked for?
-		
+
 		/* no version support
 		if (pVersionId '= "") && (obj.VersionId '= pVersionId) {
 			// If not, go get the requested version
