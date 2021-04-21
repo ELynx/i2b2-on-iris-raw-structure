@@ -18,6 +18,4 @@ zpm "load /opt/irisbuild/ -v":1:1
 
 Do ##class(I2B2.FHIR.Install).Install()
 
-Do ##class(I2B2.FHIR.Install).LoadDefData("/opt/irisbuild/dataset/data.gof")
-
 halt
