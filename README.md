@@ -81,7 +81,7 @@ $ curl -H "Accept: application/fhir+json" -X GET http://localhost:65282/i2b2/fhi
 Expected response is:
 
 ```json
-
+{"resourceType":"Patient","address":[{"city":"Braintree","country":"US","postalCode":"02185","state":"Massachusetts","type":"both","use":"home"}],"birthDate":"1988-01-20","communication":[{"language":{"coding":[{"code":"es","display":"spanish","system":"http://hl7.org/fhir/ValueSet/languages"}]},"preferred":true}],"deceasedBoolean":false,"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/patient-nationality","valueCoding":{"code":"2186-5","display":"Not Hispanic or Latino","system":"http://terminology.hl7.org/CodeSystem/v3-Ethnicity"}},{"url":"http://hl7.org/fhir/StructureDefinition/patient-religion","valueCoding":{"code":"1007","display":"Atheism","system":"http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation"}}],"gender":"male","id":"1000000035","identifier":[{"assigner":{"display":"i2b2"},"period":{"start":"2010-11-04"},"type":{"coding":[{"code":"PLAC","system":"http://terminology.hl7.org/CodeSystem/v2-0203"}]},"use":"usual","value":"1000000035"}],"maritalStatus":{"coding":[{"code":"U","display":"unmarried","system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"}]}}
 ```
 
 ## More info
