@@ -8,7 +8,13 @@
       <SourcesRoot>src/iris</SourcesRoot>
       <Resource Name="I2B2.PKG"/>
       <Resource Name="public.PKG"/>
-      <Resource Name="*.LUT"/>
+      <Resource Name="I2B2.FHIR.Lookup.CommunicationLanguage.LUT"/>
+      <Resource Name="I2B2.FHIR.Lookup.Gender.LUT"/>
+      <Resource Name="I2B2.FHIR.Lookup.MaritalStatus.LUT"/>
+      <Resource Name="I2B2.FHIR.Lookup.Patient.LUT"/>
+      <Resource Name="I2B2.FHIR.Lookup.Race.LUT"/>
+      <Resource Name="I2B2.FHIR.Lookup.RacePatientNationality.LUT"/>
+      <Resource Name="I2B2.FHIR.Lookup.Religion.LUT"/>
     </Module>
   </Document>
 </Export>
