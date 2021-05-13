@@ -1,4 +1,4 @@
-FROM jboss/wildfly
+FROM jboss/wildfly:17.0.1.Final
 
 ADD i2b2.war /opt/jboss/wildfly/standalone/deployments/
 ADD postgresql-42.2.8.jar /opt/jboss/wildfly/standalone/deployments/

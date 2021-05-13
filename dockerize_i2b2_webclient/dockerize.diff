@@ -1,9 +1,9 @@
  i2b2_config_data.js |  6 +++---
- index.php           | 10 +++++++++-
- 2 files changed, 12 insertions(+), 4 deletions(-)
+ index.php           | 15 +++++++++++++--
+ 2 files changed, 16 insertions(+), 5 deletions(-)
 
 diff --git a/i2b2_config_data.js b/i2b2_config_data.js
-index 1d1f7b2..4cf21c4 100755
+index 1d1f7b2..52ec1c7 100755
 --- a/i2b2_config_data.js
 +++ b/i2b2_config_data.js
 @@ -6,11 +6,11 @@
@@ -13,7 +13,7 @@ index 1d1f7b2..4cf21c4 100755
 -		  name: "HarvardDemo",
 -		  urlCellPM: "http://services.i2b2.org/i2b2/services/PMService/",
 +		  name: "i2b2demo",
-+		  urlCellPM: "http://host.docker.internal:9090/i2b2/services/PMService/",
++		  urlCellPM: "http://i2b2-core-server:8080/i2b2/services/PMService/",
  		  allowAnalysis: true,
  		  //installer: "/webclient/plugin_installer/",
 -		  debug: false
@@ -22,7 +22,7 @@ index 1d1f7b2..4cf21c4 100755
  	]
  	//-------------------------------------------------------------------------------------------
 diff --git a/index.php b/index.php
-index be62126..a70892b 100755
+index be62126..deff7e9 100755
 --- a/index.php
 +++ b/index.php
 @@ -30,7 +30,7 @@ Update: 05-03-17 (nw096):
@@ -30,18 +30,30 @@ index be62126..a70892b 100755
  
  
 -$pmURL = "http://127.0.0.1:8080/i2b2/rest/PMService/getServices";
-+$pmURL = "http://host.docker.internal:8080/i2b2/rest/PMService/getServices";
++$pmURL = "http://i2b2-core-server:8080/i2b2/rest/PMService/getServices";
  $pmCheckAllRequests = false;
  
  $WHITELIST = array(
-@@ -91,6 +91,14 @@ if ($PostBody=="") {
+@@ -41,7 +41,10 @@ $WHITELIST = array(
+         "http://127.0.0.1",
+         "http://localhost:8080",
+         "http://localhost:9090",
+-        "http://localhost"
++        "http://localhost",
++        "http://i2b2-core-server:8080",
++        "http://i2b2-core-server:9090",
++        "http://i2b2-core-server"
+ );
+ 
+ 
+@@ -91,6 +94,14 @@ if ($PostBody=="") {
  	$startPos = strpos($PostBody,"<redirect_url>") + 14;
  	$endPos = strpos($PostBody,"</redirect_url>", $startPos);
  	$proxyURL = substr($PostBody, $startPos, ($endPos - $startPos));
 +
 +	// refer to docker host for i2b2 core server
 +	// <<<
-+	$proxyURLDockered = str_replace("localhost", "host.docker.internal", $proxyURL);
++	$proxyURLDockered = str_replace("localhost:9090", "i2b2-core-server:8080", $proxyURL);
 +	$PostBody = str_replace($proxyURL, $proxyURLDockered, $PostBody);
 +	$proxyURL = $proxyURLDockered;
 +	// <<<
