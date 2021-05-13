@@ -1,20 +1,34 @@
 version: '3.6'
 services:
   iris:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports: 
+    ports:
       - 65281:1972
       - 65282:52773
       - 65283:53773
     volumes:
       - ./:/irisrun/repo
+
+  i2b2-core-server:
+    build:
+      context: ./dockerize_i2b2_core-server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+      - 9090:9090
+    depends_on:
+      - iris
+
   i2b2-webclient:
-    build: 
+    build:
       context: ./dockerize_i2b2_webclient
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports: 
+    ports:
       - 8082:80
+    depends_on:
+      - i2b2-core-server
