@@ -11,3 +11,10 @@ services:
       - 65283:53773
     volumes:
       - ./:/irisrun/repo
+  i2b2-webclient:
+    build: 
+      context: ./dockerize_i2b2_webclient
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports: 
+      - 8082:80

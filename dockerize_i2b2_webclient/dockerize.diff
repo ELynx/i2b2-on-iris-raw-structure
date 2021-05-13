@@ -1,0 +1,51 @@
+ i2b2_config_data.js |  6 +++---
+ index.php           | 10 +++++++++-
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/i2b2_config_data.js b/i2b2_config_data.js
+index 1d1f7b2..4cf21c4 100755
+--- a/i2b2_config_data.js
++++ b/i2b2_config_data.js
+@@ -6,11 +6,11 @@
+ 	// THESE ARE ALL THE DOMAINS A USER CAN LOGIN TO
+ 	lstDomains: [
+ 		{ domain: "i2b2demo",
+-		  name: "HarvardDemo",
+-		  urlCellPM: "http://services.i2b2.org/i2b2/services/PMService/",
++		  name: "i2b2demo",
++		  urlCellPM: "http://host.docker.internal:9090/i2b2/services/PMService/",
+ 		  allowAnalysis: true,
+ 		  //installer: "/webclient/plugin_installer/",
+-		  debug: false
++		  debug: true
+ 		}
+ 	]
+ 	//-------------------------------------------------------------------------------------------
+diff --git a/index.php b/index.php
+index be62126..a70892b 100755
+--- a/index.php
++++ b/index.php
+@@ -30,7 +30,7 @@ Update: 05-03-17 (nw096):
+ */
+ 
+ 
+-$pmURL = "http://127.0.0.1:8080/i2b2/rest/PMService/getServices";
++$pmURL = "http://host.docker.internal:8080/i2b2/rest/PMService/getServices";
+ $pmCheckAllRequests = false;
+ 
+ $WHITELIST = array(
+@@ -91,6 +91,14 @@ if ($PostBody=="") {
+ 	$startPos = strpos($PostBody,"<redirect_url>") + 14;
+ 	$endPos = strpos($PostBody,"</redirect_url>", $startPos);
+ 	$proxyURL = substr($PostBody, $startPos, ($endPos - $startPos));
++
++	// refer to docker host for i2b2 core server
++	// <<<
++	$proxyURLDockered = str_replace("localhost", "host.docker.internal", $proxyURL);
++	$PostBody = str_replace($proxyURL, $proxyURLDockered, $PostBody);
++	$proxyURL = $proxyURLDockered;
++	// <<<
++
+ 	$newXML = $PostBody;
+ 
+ 	// Do not allow DOCTYPE declarations
