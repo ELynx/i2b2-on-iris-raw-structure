@@ -7,4 +7,4 @@ ADD ont-ds.xml /opt/jboss/wildfly/standalone/deployments/
 ADD pm-ds.xml /opt/jboss/wildfly/standalone/deployments/
 ADD work-ds.xml /opt/jboss/wildfly/standalone/deployments/
 
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "--debug", "-b", "0.0.0.0"]

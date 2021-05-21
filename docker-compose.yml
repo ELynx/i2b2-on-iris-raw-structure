@@ -17,6 +17,8 @@ services:
       context: ./dockerize_i2b2_core-server
       dockerfile: Dockerfile
     restart: unless-stopped
+    ports:
+      - 8787:8787
     depends_on:
       - iris
 
