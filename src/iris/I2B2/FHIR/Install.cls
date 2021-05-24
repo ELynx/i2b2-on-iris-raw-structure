@@ -26,12 +26,12 @@ ClassMethod LoadDefData(FileName As %String, Nsp As %String = "")
 	If (Nsp = "") {
 		Set Nsp = $namespace
 	}
-	Write "Loading test data, this may take time"
+	Write "Loading test data, this may take time", !
 	Set sc = ##class(%Library.Global).Import(Nsp, "*", FileName, 7)
 	If $$$ISERR(sc) {
 		Write $system.Status.GetErrorText(sc)
 	} else {
-		Write "Test data loaded successfully"
+		Write "Test data loaded successfully", !
 	}
 	Quit
 }
