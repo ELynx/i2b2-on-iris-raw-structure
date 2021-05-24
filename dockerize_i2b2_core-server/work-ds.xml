@@ -10,12 +10,12 @@
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema">
         <datasource jta="false" jndi-name="java:/WorkplaceBootStrapDS"
                 pool-name="WorkplaceBootStrapDS" enabled="true" use-ccm="false">
-                <connection-url>jdbc:IRIS://iris:52773/I2B2/work_workplace_bootstrap_ds.log</connection-url>
+                <connection-url>jdbc:IRIS://iris:1972/IRISAPP/work_workplace_bootstrap_ds.log</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
                 <security>
                         <user-name>_SYSTEM</user-name>
-                        <password>1qaz@WSX</password>
+                        <password>SYS</password>
                 </security>
                 <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.novendor.JDBC4ValidConnectionChecker"/>
@@ -31,12 +31,12 @@
         </datasource>
         <datasource jta="false" jndi-name="java:/WorkplaceDemoDS"
                 pool-name="WorkplaceDemoDS" enabled="true" use-ccm="false">
-                <connection-url>jdbc:IRIS://iris:52773/I2B2/work_workplace_demo_ds.log</connection-url>
+                <connection-url>jdbc:IRIS://iris:1972/IRISAPP/work_workplace_demo_ds.log</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
                 <security>
                         <user-name>_SYSTEM</user-name>
-                        <password>1qaz@WSX</password>
+                        <password>SYS</password>
                 </security>
                 <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.novendor.JDBC4ValidConnectionChecker"/>
