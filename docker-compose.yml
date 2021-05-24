@@ -16,8 +16,8 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - 8787:8787
-      - 9990:9990
+      - 8788:8787
+      - 9991:9990
     depends_on:
       - iris
 
@@ -38,4 +38,4 @@ services:
       dockerfile: Dockerfile-develop
     restart: unless-stopped
     ports:
-      - 8083:80
+      - 8081:80
