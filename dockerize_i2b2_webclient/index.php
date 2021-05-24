@@ -95,7 +95,7 @@ if ($PostBody=="") {
 	$endPos = strpos($PostBody,"</redirect_url>", $startPos);
 	$proxyURL = substr($PostBody, $startPos, ($endPos - $startPos));
 
-	// refer to docker host for i2b2 core server
+	// refer to i2b2 core server within docker
 	// <<<
 	$proxyURLDockered = str_replace("localhost:9090", "i2b2-core-server:8080", $proxyURL);
 	$PostBody = str_replace($proxyURL, $proxyURLDockered, $PostBody);
