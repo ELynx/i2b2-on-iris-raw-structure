@@ -9,10 +9,15 @@
 -->
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema">
         <datasource jta="false" jndi-name="java:/WorkplaceBootStrapDS"
-                pool-name="WorkplaceBootStrapDS" enabled="true" use-ccm="false">
+                pool-name="IRIS_POOL" enabled="true" use-ccm="false">
                 <connection-url>jdbc:IRIS://iris:1972/IRISAPP/work_workplace_bootstrap_ds.log</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
+                <pool>
+                        <min-pool-size>0</min-pool-size>
+                        <max-pool-size>1</max-pool-size>
+                        <prefill>false</prefill>
+                </pool>
                 <security>
                         <user-name>_SYSTEM</user-name>
                         <password>SYS</password>
@@ -30,10 +35,15 @@
                 </statement>
         </datasource>
         <datasource jta="false" jndi-name="java:/WorkplaceDemoDS"
-                pool-name="WorkplaceDemoDS" enabled="true" use-ccm="false">
+                pool-name="IRIS_POOL" enabled="true" use-ccm="false">
                 <connection-url>jdbc:IRIS://iris:1972/IRISAPP/work_workplace_demo_ds.log</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
+                <pool>
+                        <min-pool-size>0</min-pool-size>
+                        <max-pool-size>1</max-pool-size>
+                        <prefill>false</prefill>
+                </pool>
                 <security>
                         <user-name>_SYSTEM</user-name>
                         <password>SYS</password>
