@@ -41,7 +41,7 @@ Steps creating the project
 ### Phase 2 goals
 
     * Based on findings of Phase 1, provide i2b2-core-server variation that can use IRIS as database backend
-	* Provide fully dockerized test setup for i2b2 and IRIS, pre-configured for immediate use
+    * Provide fully dockerized test setup for i2b2 and IRIS, pre-configured for immediate use
 
 ## Running IRIS with sample I2B2 dataset
 
