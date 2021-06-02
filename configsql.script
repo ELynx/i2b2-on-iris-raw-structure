@@ -7,4 +7,8 @@ s Properties("DefaultSchema")="public"
 s Status=##Class(Config.SQL).Modify(.Properties)
 i 'Status w !,"Error="_$SYSTEM.Status.GetErrorText(Status)
 
+zn "IRISAPP"
+
+do ##class(I2B2.FHIR.Install).LoadDefData("/opt/irisbuild/dataset/nextval.gof")
+
 halt
