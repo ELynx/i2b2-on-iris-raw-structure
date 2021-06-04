@@ -8,18 +8,20 @@ The i2b2/Transmart community has implemented its query builder and underlying i2
 
 This POC is focused on assessment and gap analysis for adding InterSystems IRIS as an additional data source. This would allow i2b2 clients to take advantage of the IRIS high-performance data querying capabilities as well as multitude of other features and functionality offered by IRIS.
 
-## What & Why
+## What & Why - Phase 1
 
-### Introduction: POC Goals
+### Phase 1 goals
 
     * Investigate compatibility of the i2b2 Query builder, i2b2 web and i2b2 core with IRIS backend and identify gaps preventing usage of the i2b2 Web client with IRIS back end.
     * Determine steps necessary to mitigate compatibility gaps for i2b2 with IRIS backend.
-    * Develop a data migration path from i2b2- to IRIS.
+    * Develop a data migration path from i2b2 to IRIS.
     * Execute direct SQL queries against i2b2 data in IRIS and achieve equivalence of the results with the results in the relational DB (Postgres) within limited POC scope. Capture and document the differences as well as steps to expand to a larger scope.
     * Implement an infrastructure for exporting i2b2 patient data as FHIR resources, map and export sample resources (e.g. Patient, Meds) based on the data in the i2b2 instance.
     * Document findings and publish to InterSystems open exchange.
 
-### How it was done
+Phase 1 was completed, summary findings are in `Documentation i2b2 on Iris - Phase 1.pdf`
+
+### How Phase 1 was done
 
 Steps creating the project
 
@@ -34,6 +36,13 @@ Steps creating the project
     9. Document the process of implementation of I2B2 on IRIS.
     10. Publish the implementation and documentation to InterSystems Open Exchange.
 
+## What & Why - Phase 2
+
+### Phase 2 goals
+
+    * Based on findings of Phase 1, provide i2b2-core-server variation that can use IRIS as database backend
+    * Provide fully dockerized test setup for i2b2 and IRIS, pre-configured for immediate use
+
 ## Running IRIS with sample I2B2 dataset
 
 These steps are following instructions provided by InterSystems community.
@@ -47,7 +56,7 @@ Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installi
 1. Clone/git pull the repo into any local directory
 
 ```
-$ git clone https://github.com/ELynx/i2b2-on-iris-raw-structure.git
+$ git clone https://github.com/ELynx/i2b2-on-iris.git
 ```
 
 2. Open the terminal in this directory and run:
@@ -84,6 +93,20 @@ Expected response is:
 {"resourceType":"Patient","address":[{"city":"Braintree","country":"US","postalCode":"02185","state":"Massachusetts","type":"both","use":"home"}],"birthDate":"1988-01-20","communication":[{"language":{"coding":[{"code":"es","display":"spanish","system":"http://hl7.org/fhir/ValueSet/languages"}]},"preferred":true}],"deceasedBoolean":false,"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/patient-nationality","valueCoding":{"code":"2186-5","display":"Not Hispanic or Latino","system":"http://terminology.hl7.org/CodeSystem/v3-Ethnicity"}},{"url":"http://hl7.org/fhir/StructureDefinition/patient-religion","valueCoding":{"code":"1007","display":"Atheism","system":"http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation"}}],"gender":"male","id":"1000000035","identifier":[{"assigner":{"display":"i2b2"},"period":{"start":"2010-11-04"},"type":{"coding":[{"code":"PLAC","system":"http://terminology.hl7.org/CodeSystem/v2-0203"}]},"use":"usual","value":"1000000035"}],"maritalStatus":{"coding":[{"code":"U","display":"unmarried","system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"}]}}
 ```
 
-## More info
+Open `localhost:8082` in web browser supported by i2b2 web client. Expected outcome is i2b2-webclient login page, with pre-configured credentials for demo data.
 
-For data migration, POC queries and diagrams, see `Documentation i2b2 on Iris.pdf`
+Log in with pre-configured credentials, i2b2 query builder interface should be present. Notice prepared category tree.
+
+## Troubleshooting
+
+Q: `docker-compose build` output froze.
+
+A1: Try pressing Return key, sometimes console refresh is suspended.
+
+A2: Dataset import takes long time. This step would be cached by docker, if possible, so typically only one start-up is long.
+
+Q: I get error `ERROR: Service 'iris' failed to build: Error processing tar file(exit status 1): write /usr/irissys/mgr/IRIS.DAT: no space left on device` or similar.
+
+Q: I get error `tar: data.gof: Wrote only ... of 10240 bytes tar: Exiting with failure status due to previous errors` or similar.
+
+A: Make sure that docker has enough free space for image creation. Use `prune` command to free up space. See `https://docs.docker.com/config/pruning/` for detailed instructions.
