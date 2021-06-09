@@ -2,7 +2,7 @@
 Class public.qtpatientsetcollection Extends %Persistent [ ClassType = persistent, DdlAllowed, Final, Owner = {_SYSTEM}, ProcedureBlock, SqlRowIdPrivate, SqlTableName = qt_patient_set_collection ]
 {
 
-Property patientsetcollid As %Library.BigInt [ InitialExpression = "nextval('qt_patient_set_collection_patient_set_coll_id_seq'::regclass)", Required, SqlColumnNumber = 2, SqlFieldName = patient_set_coll_id ];
+Property patientsetcollid As %Library.BigInt [ SqlColumnNumber = 2, SqlComputeCode = { set {*} = {Id}}, SqlComputed, SqlFieldName = patient_set_coll_id, Transient ];
 
 Property resultinstanceid As %Library.Integer(MAXVAL = 2147483647, MINVAL = -2147483648) [ SqlColumnNumber = 3, SqlFieldName = result_instance_id ];
 
@@ -17,9 +17,6 @@ ForeignKey qtfkpscri(resultinstanceid) References public.qtqueryresultinstance(q
 Index DDLBEIndex [ Extent, SqlName = "%%DDLBEIndex", Type = bitmap ];
 
 Index qtidxqpscriid On resultinstanceid [ SqlName = qt_idx_qpsc_riid, Type = index ];
-
-/// DDL Primary Key Specification
-Index qtpatientsetcollectionpkey On patientsetcollid [ PrimaryKey, SqlName = qt_patient_set_collection_pkey, Type = index, Unique ];
 
 Parameter USEEXTENTSET = 1;
 
