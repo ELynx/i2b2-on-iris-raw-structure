@@ -28,3 +28,9 @@ COPY dataset.script dataset.script
 RUN iris start IRIS \
     && iris session IRIS < dataset.script \
     && iris stop IRIS quietly
+
+## config SQL interface for i2b2
+COPY configsql.script configsql.script
+RUN iris start IRIS \
+    && iris session IRIS < configsql.script \
+    && iris stop IRIS quietly
