@@ -65,13 +65,7 @@ $ git clone https://github.com/ELynx/i2b2-on-iris.git
 $ docker-compose build
 ```
 
-This step may take some time to complete, since FHIR packages are prepared. If process seem to stop at
-
-```
-$ Load Resources: hl7.fhir.r3.core@3.0.2
-```
-
-then wait some more time, up to 25 minutes may be necessary, or more, depending on your machine power.
+This step may take some time to complete, since FHIR packages are prepared. Up to 15 minutes may be necessary, depending on your machine power.
 
 3. Run the IRIS container with your project:
 
