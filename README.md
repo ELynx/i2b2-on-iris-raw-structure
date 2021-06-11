@@ -78,7 +78,7 @@ $ docker-compose up -d
 On Docker host machine execute:
 
 ```
-$ curl -H "Accept: application/fhir+json" -X GET http://localhost:65282/i2b2/fhir/r4/Patient/1000000035
+$ curl -H "Accept: application/fhir+json" -X GET http://localhost:52773/i2b2/fhir/r4/Patient/1000000035
 ```
 
 Expected response is:
