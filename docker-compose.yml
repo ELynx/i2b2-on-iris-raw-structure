@@ -32,12 +32,3 @@ services:
       - 8082:80
     depends_on:
       - i2b2-core-server
-
-# DEVELOP only, targets localhost for core server
-  i2b2-webclient-develop:
-    build:
-      context: ./dockerize_i2b2_webclient
-      dockerfile: Dockerfile-develop
-    restart: unless-stopped
-    ports:
-      - 8081:80
