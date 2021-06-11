@@ -6,7 +6,8 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - 51773:1972
+      - 51773:1972/tcp
+      - 51773:1972/udp
       - 52773:52773
       - 53773:53773
     volumes:
