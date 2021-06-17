@@ -16,6 +16,6 @@ zn "IRISAPP"
 do $System.OBJ.LoadDir("/opt/irisbuild/src","ck",,1)
 ;zpm "load /opt/irisbuild/ -v":1:1
 
-do ##class(I2B2.FHIR.Install).Install()
+;do ##class(I2B2.FHIR.Install).Install()
 
 halt
