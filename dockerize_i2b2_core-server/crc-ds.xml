@@ -10,12 +10,12 @@
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema">
         <datasource jta="false" jndi-name="java:/CRCBootStrapDS"
                 pool-name="IRIS_POOL_1" enabled="true" use-ccm="false">
-                <connection-url>jdbc:IRIS://udotestsrv03.fls.cloud:1972/I2B2FHIR</connection-url>
+                <connection-url>jdbc:IRIS://iris:1972/IRISAPP</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
                 <security>
                         <user-name>_SYSTEM</user-name>
-                        <password>1qaz@WSX</password>
+                        <password>SYS</password>
                 </security>
                 <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.novendor.JDBC4ValidConnectionChecker"/>
@@ -31,12 +31,12 @@
         </datasource>
         <datasource jta="false" jndi-name="java:/QueryToolDemoDS"
                 pool-name="IRIS_POOL_2" enabled="true" use-ccm="false">
-                <connection-url>jdbc:IRIS://udotestsrv03.fls.cloud:1972/I2B2FHIR</connection-url>
+                <connection-url>jdbc:IRIS://iris:1972/IRISAPP</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
                 <security>
                         <user-name>_SYSTEM</user-name>
-                        <password>1qaz@WSX</password>
+                        <password>SYS</password>
                 </security>
                 <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.novendor.JDBC4ValidConnectionChecker"/>
