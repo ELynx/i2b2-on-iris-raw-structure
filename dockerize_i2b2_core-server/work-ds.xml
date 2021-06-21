@@ -9,18 +9,13 @@
 -->
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema">
         <datasource jta="false" jndi-name="java:/WorkplaceBootStrapDS"
-                pool-name="IRIS_POOL" enabled="true" use-ccm="false">
-                <connection-url>jdbc:IRIS://iris:1972/IRISAPP</connection-url>
+                pool-name="IRIS_POOL_8" enabled="true" use-ccm="false">
+                <connection-url>jdbc:IRIS://udotestsrv03.fls.cloud:1972/I2B2FHIR</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
-                <pool>
-                        <min-pool-size>3</min-pool-size>
-                        <max-pool-size>3</max-pool-size>
-                        <prefill>true</prefill>
-                </pool>
                 <security>
                         <user-name>_SYSTEM</user-name>
-                        <password>SYS</password>
+                        <password>1qaz@WSX</password>
                 </security>
                 <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.novendor.JDBC4ValidConnectionChecker"/>
@@ -35,18 +30,13 @@
                 </statement>
         </datasource>
         <datasource jta="false" jndi-name="java:/WorkplaceDemoDS"
-                pool-name="IRIS_POOL" enabled="true" use-ccm="false">
-                <connection-url>jdbc:IRIS://iris:1972/IRISAPP</connection-url>
+                pool-name="IRIS_POOL_9" enabled="true" use-ccm="false">
+                <connection-url>jdbc:IRIS://udotestsrv03.fls.cloud:1972/I2B2FHIR</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
-                <pool>
-                        <min-pool-size>3</min-pool-size>
-                        <max-pool-size>3</max-pool-size>
-                        <prefill>true</prefill>
-                </pool>
                 <security>
                         <user-name>_SYSTEM</user-name>
-                        <password>SYS</password>
+                        <password>1qaz@WSX</password>
                 </security>
                 <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.novendor.JDBC4ValidConnectionChecker"/>
