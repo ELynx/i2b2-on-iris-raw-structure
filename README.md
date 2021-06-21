@@ -101,6 +101,6 @@ A2: Dataset import takes long time. This step would be cached by docker, if poss
 
 Q: I get error `ERROR: Service 'iris' failed to build: Error processing tar file(exit status 1): write /usr/irissys/mgr/IRIS.DAT: no space left on device` or similar.
 
-Q: I get error `tar: data.gof: Wrote only ... of 10240 bytes tar: Exiting with failure status due to previous errors` or similar.
+Q: I get error `tar: data.gof: Wrote only ... of ... bytes tar: Exiting with failure status due to previous errors` or similar.
 
 A: Make sure that docker has enough free space for image creation. Use `prune` command to free up space. See `https://docs.docker.com/config/pruning/` for detailed instructions.
