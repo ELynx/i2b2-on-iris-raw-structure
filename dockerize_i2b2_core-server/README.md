@@ -10,4 +10,4 @@ https://github.com/ELynx/i2b2-core-server
 
 Provided version is taken from commit
 
-https://github.com/ELynx/i2b2-core-server/commit/bb1f7f99adefbc3dda16e93c3feb3493f5df14f4
+https://github.com/ELynx/i2b2-core-server/commit/c37c61fe6afefbae4daab039f54c79e8f8521eb7
