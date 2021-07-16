@@ -9,10 +9,14 @@
 -->
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema">
         <datasource jta="false" jndi-name="java:/CRCBootStrapDS"
-                pool-name="IRIS_POOL_1" enabled="true" use-ccm="false">
+                pool-name="IRIS_POOL" enabled="true" use-ccm="false">
                 <connection-url>jdbc:IRIS://iris:1972/IRISAPP</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
+                <pool>
+                        <min-pool-size>0</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                </pool>
                 <security>
                         <user-name>_SYSTEM</user-name>
                         <password>SYS</password>
@@ -30,10 +34,14 @@
                 </statement>
         </datasource>
         <datasource jta="false" jndi-name="java:/QueryToolDemoDS"
-                pool-name="IRIS_POOL_2" enabled="true" use-ccm="false">
+                pool-name="IRIS_POOL" enabled="true" use-ccm="false">
                 <connection-url>jdbc:IRIS://iris:1972/IRISAPP</connection-url>
                 <driver-class>com.intersystems.jdbc.IRISDriver</driver-class>
                 <driver>intersystems-jdbc-3.2.0.jar</driver>
+                <pool>
+                        <min-pool-size>0</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                </pool>
                 <security>
                         <user-name>_SYSTEM</user-name>
                         <password>SYS</password>
