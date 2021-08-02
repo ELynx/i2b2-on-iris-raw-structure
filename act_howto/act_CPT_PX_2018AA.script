@@ -1,5 +1,0 @@
-zn "IRISAPP"
-
-do $System.SQL.DDLImport("IRIS","_SYSTEM","/irisrun/repo/act_howto/insert_metadata_ACT_CPT_PX_2018AA_adapted.sql")
-
-halt

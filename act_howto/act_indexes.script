@@ -1,5 +1,0 @@
-zn "IRISAPP"
-
-do $System.SQL.DDLImport("IRIS","_SYSTEM","/irisrun/repo/act_howto/zz_create_i2b2metadata_index.sql")
-
-halt
