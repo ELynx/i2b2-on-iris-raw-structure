@@ -16,13 +16,13 @@ Matches i2b2-core-server version at time of creation
 
 ACT Network Onthology resources, starting from https://dbmi-pitt.github.io/ACT-Network
 
-For speed, we added file ACT_CPT_PX_2018AA.dsv here directly, but file is coming originally from ACT project
+For speed, we added file `insert_metadata_ACT_CPT_PX_2018AA_adapted.sql` here directly, but file is coming originally from ACT project, named `ACT_CPT_PX_2018AA.dsv`
 
 # Preparation
 
 Extract data release file, and navigate to
 
-.../i2b2-data-1.7.12a.0001/edu.harvard.i2b2.data/Release_1-7/NewInstall/Metadata/act/scripts/postgresql
+.../i2b2-data-1.7.12a.0001/edu.harvard.i2b2.data/Release_1-7/NewInstall/Metadata/act/scripts/oracle
 
 Extract metadata.zip
 
@@ -36,7 +36,7 @@ Navigate to
 
 Copy two .sql files into same folder
 
-File ACT_CPT_PX_2018AA.dsv should be here
+File `insert_metadata_ACT_CPT_PX_2018AA_adapted.sql` should be here
 
 File !TODO our script! shoule be here
 
@@ -59,3 +59,13 @@ Check that files are in place
 `ls -l`
 
 You should see all files that you copied in preparation step
+
+Run ObjectScript file that will install all SQL fiels above as DDL Imports
+
+`iris session IRIS < act_i2b2.script`
+
+Wait for DDLs to execute.
+
+Check `all_errors.log` for errors. There may be errors because some of tables or table entities are already created in default i2b2 instance.
+
+Check `all_nosup.log` for unsupported operations. File should not exist or be empty.
