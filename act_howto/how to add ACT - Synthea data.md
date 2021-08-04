@@ -66,6 +66,6 @@ Run ObjectScript file that will install all SQL fiels above as DDL Imports
 
 Wait for DDLs to execute.
 
-Check `all_errors.log` for errors. There may be errors because some of tables or table entities are already created in default i2b2 instance.
+Check ...`_Errors.log` for errors. There may be errors because some of tables or table entities are already created in default i2b2 instance.
 
-Check `all_nosup.log` for unsupported operations. File should not exist or be empty.
+Check ...`_Unsupported.log` for unsupported operations. Files should be empty.
