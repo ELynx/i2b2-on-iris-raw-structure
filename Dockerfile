@@ -34,3 +34,10 @@ COPY configsql.script configsql.script
 RUN iris start IRIS \
     && iris session IRIS < configsql.script \
     && iris stop IRIS quietly
+
+## Special for this branch - clear existing queries; force single DS
+COPY force_single_data_source.script force_single_data_source.script
+COPY force_single_data_source.sql force_single_data_source.sql
+RUN iris start IRIS \
+    && iris session IRIS < force_single_data_source.script \
+    && iris stop IRIS quietly
