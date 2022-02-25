@@ -49,7 +49,17 @@ These steps are following instructions provided by InterSystems community.
 
 ### Prerequisites
 
-Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
+Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed.
+
+Since Docker Desktop became paid application, we suggest you can actually use Docker Engine. There will be no "nice UI" though.
+
+For Windows, starting point for them is [here](https://docs.docker.com/engine/install/binaries/#install-server-and-client-binaries-on-windows).
+
+Get `docker-compose` executable [here](https://github.com/docker/compose/releases/).
+
+Make sure that you can run `docker run hello-world`. Remember CLI settings (like path and admin rights) and use them for this setup.
+
+Steps below assume that you have `docker` and `docker-compose` in path, and your CLI has admin rights to access service instance of `dockerd`. `dockerd` should be running as well.
 
 ### Installation 
 
