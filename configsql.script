@@ -7,4 +7,11 @@ s Properties("DefaultSchema")="public"
 s Status=##Class(Config.SQL).Modify(.Properties)
 i 'Status w !,"Error="_$SYSTEM.Status.GetErrorText(Status)
 
+d ##class(%SYSTEM.TSQL).SetDialect("MSSQL")
+
+zn "IRISAPP"
+
+s Status=##Class(public.observationfact).%BuildIndices()
+I 'Status w !,"Error="_$SYSTEM.Status.GetErrorText(Status)
+
 halt
