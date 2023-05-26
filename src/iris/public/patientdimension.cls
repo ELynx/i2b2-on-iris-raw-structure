@@ -58,6 +58,20 @@ Index pdidxstatecityzip On (statecityzippath, patientnum) [ SqlName = pd_idx_sta
 
 Index indageinyearsnum On ageinyearsnum;
 
+Index istatecityzippath On statecityzippath(ELEMENTS);
+
+ClassMethod statecityzippathBuildValueArray(value, ByRef array) As %Status
+{
+  If value="" {
+    Set array(0)=value
+  } else{
+    for i=1:1:$l(value, "\") {
+	    Set array(i-1)=$p(value, "\",i)
+    }
+  }
+  Quit $$$OK
+}
+
 Storage Default
 {
 <Data name="patientdimensionDefaultData">
@@ -122,6 +136,7 @@ Storage Default
 <DataLocation>^B5ms.DsYj.1</DataLocation>
 <DefaultData>patientdimensionDefaultData</DefaultData>
 <ExtentLocation>^B5ms.DsYj</ExtentLocation>
+<ExtentSize>134</ExtentSize>
 <IdFunction>sequence</IdFunction>
 <IdLocation>^B5ms.DsYj.1</IdLocation>
 <Index name="DDLBEIndex">
@@ -132,6 +147,9 @@ Storage Default
 </Index>
 <Index name="indageinyearsnum">
 <Location>^B5ms.DsYj.8</Location>
+</Index>
+<Index name="istatecityzippath">
+<Location>^B5ms.DsYj.9</Location>
 </Index>
 <Index name="paidxuploadid">
 <Location>^B5ms.DsYj.4</Location>

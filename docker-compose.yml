@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
+    command: --check-caps false
     ports:
       - 51773:1972/tcp
       - 51773:1972/udp
